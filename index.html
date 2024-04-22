@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormValidation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+
+    .error{
+        color: red;
+    }
+    .container{
+        background-color:#faebd7;
+        width: 40%;
+        color: black;
+    }
+    h2{
+        text-align: center;
+    }
+    .button{
+        padding: 2% 40% 2%;
+    }
+    #myForm{
+        width: 98%;
+        padding: 5%;
+    }
+ 
+</style>
+
+</head>
+
+<body>
+    <div class="container mt-3">
+    <h2>Form Validation </h2>
+    <form id="myForm">
+        <div class="content1">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" >
+        <span id="nameError" class="error"></span>
+        </div>
+        <div>
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" >
+        <span id="emailError" class="error"></span>
+    </div>
+      
+       <div class="content2">
+
+        <lable for="address">Address:</lable>
+        <input type="address" class="form-control" id="address" name="address" >
+        <span id="addressError" class="error"></span>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" >
+        <span id="passwordError" class="error"></span>
+    </div>
+         
+         <div class="button">
+        <button type="submit">Submit</button>
+    </div>
+    </form>
+</div>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const addressInput = document.getElementById('address');
+        const passwordInput = document.getElementById('password');
+
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
+
+          
+            if (nameInput.value.trim() === '') {
+                document.getElementById('nameError').textContent = 'Name is required';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').textContent = '';
+            }
+
+            
+            if (emailInput.value.trim() === '') {
+                document.getElementById('emailError').textContent = 'Please enter a valid e-mail address.';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').textContent = '';
+            }
+
+
+            if (addressInput.value.trim() === '') {
+                document.getElementById('addressError').textContent = 'Address is required.';
+                isValid = false;
+            } else {
+                document.getElementById('addressError').textContent = '';
+            }
+
+            
+            if (passwordInput.value.trim() === '') {
+                document.getElementById('passwordError').textContent = 'Password must contain characters,numbers and symbols.';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').textContent = '';
+            }
+
+            if (!isValid) {
+                event.preventDefault(); 
+            }
+        });
+</script>
+
+</body>
+</html>
